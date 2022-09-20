@@ -49,7 +49,7 @@ function renderGame(){
         message = "Do you want to draw a new card?";
     }else if(sumCard === 21){
         message = "Nice you've got blackjack!";
-        blackJack = false;
+        blackJack = true;
     }else{
         message = "You are out of the game.";
         isAlive = false;
@@ -58,16 +58,16 @@ function renderGame(){
 }
 
 function newCard(){
-    let card = getRandomCard();
-    sumCard += card;
-    cards.push(card);
-    renderGame();
 
-    if(sumCard > 21){
+    if(isAlive === true && blackJack === false){
+        let card = getRandomCard();
+        sumCard += card;
+        cards.push(card);
+        renderGame();
+        resbutton.disabled = false;
+    }else{
         resbutton.disabled = true;
         startBtn.disabled = true;
-    }else{
-        resbutton.disabled = false;
     }
 }
 
